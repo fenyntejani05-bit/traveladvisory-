@@ -1,0 +1,1812 @@
+/* @import font */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #2dd4bf;
+    --text-dark: #111827;
+    --accent-yellow: #fef08a;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* --- Navbar --- */
+.navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: #ffffff !important; 
+    position: fixed; /* Tetap fixed agar ikut scroll */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Pastikan layer paling atas */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05); /* Bayangan halus */
+}
+
+/* Supaya navbar terbaca saat di-scroll nanti (opsional), tapi untuk sekarang kita buat absolute */
+.navbar-brand {
+    font-weight: 800;
+    font-size: 1.6rem;
+    color: #000 !important;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #374151 !important;
+    font-size: 0.95rem;
+    padding: 0 15px !important;
+}
+
+.btn-login {
+    background-color: #2caeba;
+    color: white;
+    border-radius: 50px;
+    padding: 10px 30px;
+    font-weight: 700;
+    border: none;
+    box-shadow: 0 4px 14px rgba(44, 174, 186, 0.4);
+}
+
+/* --- Hero Section (KUNCI TAMPILAN) --- */
+.hero-section {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop') no-repeat center center;
+    background-size: cover;
+    /* Tinggi kita set supaya bagian bawahnya pas buat search box */
+    min-height: 100vh; 
+    display: flex;
+    align-items: center;
+    /* Menggeser konten sedikit ke atas */
+    padding-bottom: 100px; 
+}
+
+.hero-section p.text-secondary {
+    font-size: 1rem !important;
+    font-weight: 500;
+    color: #4b5563 !important; /* Abu-abu yang lebih kontras */
+    line-height: 1.6;
+    max-width: 85%;
+}
+
+/* Overlay Gradient: Transparan di atas, Putih pudar di bawah */
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* PERBAIKAN: Gradasi Putih dari Kiri (85%) ke Kanan (Transparan) */
+    /* Ini membuat "Area Aman" putih di sebelah kiri untuk teks */
+    background: linear-gradient(90deg, #ffffff 10%, rgba(255,255,255,0.8) 45%, rgba(255,255,255,0.1) 100%);
+}
+
+.badge-highlight {
+    background-color: var(--accent-yellow);
+    color: #854d0e;
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Ukuran pas */
+    font-weight: 800;
+    line-height: 1.2;
+    color: #111827;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    max-width: 100%; /* Biarkan dia memenuhi lebar col-lg-8 */
+}
+
+/* Tombol Panah (Slider) */
+.hero-nav-btn {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.hero-nav-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+
+/* --- Hero Collage (Gambar Kanan) --- */
+/* Kita atur posisi manual agar menumpuk estetik */
+.hero-collage {
+    position: relative;
+    height: 500px;
+    /* Geser sedikit ke kanan luar agar estetik */
+    transform: translateX(20px); 
+}
+
+.collage-img {
+    position: absolute;
+    border-radius: 24px;
+    border: 5px solid #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    object-fit: cover;
+    /* Perkecil sedikit gambarnya */
+    width: 240px !important; 
+    height: 160px !important;
+}
+
+/* Gambar 1: Paling Atas Kanan (Pantai biru) */
+.img-1 { top: 20px; right: -20px; z-index: 3; }
+.img-2 { top: 150px; right: 40px; z-index: 2; }
+.img-3 { top: 280px; right: -20px; z-index: 1; }
+
+/* --- Search Box (Melayang & Overlap) --- */
+.search-box-container {
+    /* UBAH INI: Sebelumnya -180px, kita kurangi jadi -100px */
+    /* Semakin kecil angkanya, semakin turun kotaknya */
+    margin-top: -100px; 
+    position: relative;
+    z-index: 20;
+    padding-bottom: 50px;
+}
+
+.search-card {
+    background: white;
+    border-radius: 24px;
+    padding: 35px 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* Tab Navigasi Search */
+.search-tabs {
+    border-bottom: none;
+    gap: 10px;
+}
+.search-tabs .nav-link {
+    color: #64748b !important;
+    font-weight: 600;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+.search-tabs .nav-link.active {
+    color: #000 !important;
+    background-color: #f1f5f9;
+}
+.search-tabs .nav-link i {
+    margin-right: 8px;
+}
+
+/* Tombol Hitam Search */
+.btn-search-main {
+    background-color: #000;
+    color: white;
+    width: 100%;
+    height: 56px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+.btn-search-main:hover {
+    background-color: #333;
+}
+
+/* Input Fields styling */
+.input-group-text {
+    background: transparent;
+}
+.form-control {
+    background: transparent;
+}
+
+/* --- Section Cards --- */
+.section-title {
+    font-weight: 800;
+    font-size: 2.2rem;
+    color: #111827;
+}
+
+.card-tour {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+.card-tour:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 250px; /* Lebih tinggi sedikit */
+}
+.card-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+.card-badge {
+    position: absolute;
+    top: 20px; left: 20px;
+    background: white;
+    color: #f97316;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-heart {
+    position: absolute;
+    top: 20px; right: 20px;
+    background: rgba(255,255,255,0.9);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.card-heart:hover {
+    background: #fff; transform: scale(1.1);
+}
+
+.rating-badge {
+    position: absolute;
+    bottom: -18px; right: 25px;
+    background: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex; align-items: center; gap: 5px;
+}
+
+.btn-book-now {
+    background-color: #f3f4f6;
+    color: #111827;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+.btn-book-now:hover {
+    background-color: #e5e7eb;
+    color: #000;
+}
+
+/* --- SECTION: KATEGORI WISATA (PREMIUM STYLE) --- */
+.btn-dark-rounded {
+    background-color: #111827;
+    color: #fff;
+    border-radius: 50px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn-dark-rounded:hover {
+    background-color: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    color: #fff;
+}
+
+/* Card Kategori Elegan */
+.cat-card {
+    background: #fff;
+    border-radius: 24px; /* Sudut lebih bulat */
+    padding: 12px; /* Padding di dalam agar gambar ada jarak manis */
+    /* Hapus border garis, ganti dengan bayangan halus */
+    border: none;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05); 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal saat hover */
+    height: 100%;
+    position: relative;
+}
+
+.cat-card:hover {
+    transform: translateY(-10px); /* Naik lebih tinggi saat hover */
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.15); /* Bayangan makin tebal */
+}
+
+.cat-img {
+    border-radius: 18px;
+    height: 160px; /* Gambar lebih tinggi */
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    /* Tambahkan filter sedikit gelap agar teks lebih pop (opsional) */
+    filter: brightness(0.95);
+    transition: 0.3s;
+}
+.cat-card:hover .cat-img {
+    filter: brightness(1.05);
+}
+
+.cat-info {
+    padding: 0 10px 10px 10px;
+}
+
+.cat-title {
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+    color: #1f2937;
+    letter-spacing: -0.5px;
+}
+
+.cat-subtitle {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+/* Tombol Panah Kanan Bawah */
+.btn-arrow-sm {
+    width: 40px; height: 40px;
+    background-color: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1f2937;
+    transition: 0.3s;
+    /* Posisikan absolute di pojok kanan bawah card */
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+.cat-card:hover .btn-arrow-sm {
+    background-color: #2dd4bf; /* Berubah warna teal saat hover */
+    color: #fff;
+    transform: rotate(-45deg); /* Efek putar sedikit */
+}
+
+/* --- SECTION: PROMO BANNERS (VIBRANT STYLE) --- */
+.promo-card {
+    border-radius: 30px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.promo-card:hover {
+    transform: scale(1.02);
+}
+
+/* Banner Biru Lebih Hidup */
+.promo-blue {
+    background: linear-gradient(120deg, #dbeafe 0%, #bfdbfe 100%);
+}
+/* Banner Pink Lebih Hidup */
+.promo-pink {
+    background: linear-gradient(120deg, #fce7f3 0%, #fbcfe8 100%);
+}
+
+.promo-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: #1e293b;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -1px;
+}
+
+.btn-yellow-cta {
+    background-color: #facc15;
+    color: #000;
+    font-weight: 800;
+    padding: 14px 32px;
+    border-radius: 50px;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.3s;
+    text-decoration: none;
+    width: fit-content;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(250, 204, 21, 0.3);
+}
+.btn-yellow-cta:hover {
+    background-color: #eab308;
+    box-shadow: 0 15px 30px rgba(250, 204, 21, 0.5);
+    transform: translateY(-3px);
+}
+
+.promo-img-deco {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 110%; /* Gambar lebih besar */
+    width: auto;
+    object-fit: cover;
+    z-index: 1;
+    transition: 0.3s;
+}
+.promo-card:hover .promo-img-deco {
+    transform: scale(1.05) rotate(2deg);
+}
+
+/* --- SECTION: HOTEL (TOP RATED) --- */
+.section-hotel-bg {
+    background-color: #fff1f2; /* Warna dasar pink lembut */
+    /* Membuat pola garis topografi halus menggunakan SVG Background */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23fb7185' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    padding: 80px 0;
+}
+
+.hotel-card {
+    border: none;
+    border-radius: 24px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    overflow: visible; /* Agar badge bisa keluar area */
+    transition: 0.3s;
+}
+.hotel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.hotel-img-wrapper {
+    position: relative;
+    border-radius: 24px 24px 0 0; /* Round atas saja */
+    overflow: hidden;
+    height: 220px;
+}
+.hotel-img-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Badge Rating di Tengah (Overlap) */
+.pill-rating {
+    position: absolute;
+    top: -18px; /* Naik ke atas menimpa gambar */
+    right: 20px;
+    background: white;
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: flex; align-items: center; gap: 5px;
+    z-index: 10;
+}
+
+.hotel-price {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.btn-hotel-book {
+    background-color: #f3f4f6;
+    color: #111827;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 8px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.btn-nav-circle {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    border: none;
+    display: flex; align-items: center; justify-content: center;
+    color: #374151;
+    transition: 0.3s;
+}
+.btn-nav-circle:hover { background: #d1d5db; }
+
+
+.luxury-section-wrapper {
+    background-color: #f3f4f6; /* Abu-abu premium */
+    border-radius: 32px;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.badge-pill-white {
+    background: white;
+    padding: 8px 24px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    display: inline-block;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    color: #111;
+}
+
+.luxury-title {
+    font-size: 3rem; /* Besar di Desktop */
+    font-weight: 800;
+    color: #111;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+/* Container Gallery Flex */
+.luxury-gallery {
+    display: flex;
+    gap: 20px;
+    height: 400px; /* Tinggi fix di desktop */
+}
+
+.gallery-main {
+    flex: 1.5; /* Gambar utama lebih lebar */
+    height: 100%;
+}
+
+.gallery-side {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+}
+
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+.luxury-section-wrapper:hover .img-cover {
+    transform: scale(1.03); /* Efek zoom dikit saat hover section */
+}
+
+/* --- SECTION: WHY CHOOSE US (PASTEL CARDS) --- */
+.feature-card {
+    border-radius: 30px; /* Sudut sangat bulat */
+    padding: 40px 25px;
+    text-align: center;
+    height: 100%;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Warna-warna Pastel Background */
+.bg-soft-teal { background-color: #ecfdf5; }  /* Hijau Mint Lembut */
+.bg-soft-pink { background-color: #fff1f2; }  /* Pink Lembut */
+.bg-soft-blue { background-color: #eff6ff; }  /* Biru Lembut */
+.bg-soft-purp { background-color: #f5f3ff; }  /* Ungu Lembut */
+
+/* Kotak Icon Putih di Tengah */
+.icon-box-sq {
+    width: 70px;
+    height: 70px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    font-size: 1.8rem;
+}
+
+/* Warna Icon Spesifik */
+.text-teal { color: #14b8a6; }
+.text-pink { color: #f43f5e; }
+.text-blue { color: #3b82f6; }
+.text-purp { color: #8b5cf6; }
+
+.feat-title {
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #111827;
+}
+
+.feat-desc {
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.feat-link {
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #111827;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+.feat-link:hover {
+    gap: 10px; /* Efek panah memanjang */
+}
+
+/* --- PARTNER LOGOS --- */
+.partner-logos-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    opacity: 0.7; /* Sedikit transparan agar tidak mencolok */
+    filter: grayscale(100%); /* Hitam putih agar rapi */
+    transition: 0.3s;
+}
+/* Saat di hover jadi berwarna */
+.partner-logos-wrapper:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.partner-logo {
+    height: 35px; /* Tinggi logo seragam */
+    width: auto;
+    object-fit: contain;
+}
+
+/* --- SECTION: RENTAL MOBIL (Compact Version) --- */
+.section-rental-bg {
+    background: linear-gradient(180deg, #f0fdfa 0%, #ffffff 100%);
+    padding: 60px 0;
+    position: relative;
+}
+
+.car-card {
+    background: white;
+    border-radius: 24px;
+    border: none; /* Hilangkan border biasa */
+    /* Shadow yang dalam dan halus (Deep Shadow) */
+    box-shadow: 0 20px 50px -10px rgba(0,0,0,0.08); 
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    height: 100%;
+    position: relative;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px -12px rgba(0,0,0,0.15);
+}
+
+.car-img-container {
+    position: relative;
+    height: 200px; /* Gambar sedikit lebih tinggi agar lega */
+    overflow: hidden;
+    background-color: #fff; /* Background putih bersih */
+}
+
+.car-img-container img {
+    width: 100%; height: 100%; 
+    object-fit: cover;
+    transition: transform 0.6s ease; /* Zoom lebih smooth */
+}
+
+.car-card:hover .car-img-container img {
+    transform: scale(1.08); /* Zoom effect */
+}
+
+/* Badge Rating Transparan Mewah */
+.rating-glass {
+    position: absolute;
+    bottom: 15px; right: 15px;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    color: #111;
+}
+
+.car-body {
+    padding: 25px;
+}
+
+/* Font size di dalam spesifikasi diperkecil sedikit */
+.car-specs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f9fafb;
+    border-radius: 12px;
+}
+.spec-item {
+    font-size: 0.75rem; /* Diperkecil */
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+}
+
+.car-title {
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: #111;
+    margin-bottom: 5px;
+    letter-spacing: -0.5px;
+}
+
+.car-location {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Spesifikasi Minimalis (Tanpa Kotak Abu) */
+.car-specs-clean {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f3f4f6; /* Garis pemisah tipis */
+}
+
+.spec-item-clean {
+    font-size: 0.85rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+}
+.spec-item-clean i {
+    color: #2dd4bf; /* Aksen Teal kecil */
+}
+
+/* Harga & Tombol */
+.price-tag {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111;
+    letter-spacing: -0.5px;
+}
+
+/* Tombol Hitam Elegan */
+.btn-rent-elegant {
+    background-color: #111827; /* Hitam Pekat */
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.btn-rent-elegant:hover {
+    background-color: #000;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* --- Update Header & Price Layout --- */
+
+/* Judul Rental yang lebih kecil & proporsional */
+.rental-title {
+    font-size: 2rem; /* Sebelumnya sekitar 2.5rem - 3rem */
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+/* Container harga agar sejajar (Inline) */
+.price-wrapper {
+    display: flex;
+    align-items: baseline; /* Ratakan teks dengan bagian bawah angka */
+    gap: 5px; /* Jarak antara harga dan /day */
+}
+
+.price-tag {
+    font-size: 1.5rem !important;
+    font-weight: 800;
+    color: #111;
+    line-height: 1;
+}
+
+.price-unit {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+/* --- SEARCH BY BRAND (CSS YANG HILANG) --- */
+
+.brand-pill {
+    background: white;
+    border: 1px solid #e2e8f0;
+    /* Padding dan Radius untuk bentuk kapsul */
+    padding: 12px 30px;
+    border-radius: 50px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    cursor: pointer;
+    /* Ukuran tetap agar rapi */
+    height: 70px;
+    min-width: 100px;
+}
+
+.brand-pill:hover {
+    border-color: #2dd4bf; /* Warna Teal saat hover */
+    box-shadow: 0 4px 12px rgba(45, 212, 191, 0.2);
+    transform: translateY(-3px);
+}
+
+/* INI KUNCINYA: Membatasi tinggi gambar agar tidak Raksasa */
+.brand-logo-img {
+    max-height: 35px; /* Tinggi maksimal logo */
+    width: auto;      /* Lebar menyesuaikan proporsi */
+    max-width: 100%;  
+    opacity: 0.6;
+    filter: grayscale(100%); /* Hitam putih */
+    transition: 0.3s;
+}
+
+/* Saat kapsul di-hover, logo jadi berwarna */
+.brand-pill:hover .brand-logo-img {
+    opacity: 1;
+    filter: grayscale(0%);
+}
+
+/* --- SECTION: TESTIMONIALS (ULTRA CLEAN LUXURY) --- */
+.testi-section {
+    /* Background abu-abu sangat muda ke putih (Tanpa Pattern) */
+    background: linear-gradient(180deg, #f3f4f6 0%, #ffffff 100%);
+    padding: 100px 0;
+}
+
+.badge-yellow-pill {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    color: #111;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.testi-card {
+    background: #fff;
+    border: none; /* Pastikan tidak ada garis pinggir */
+    border-radius: 24px;
+    padding: 40px;
+    /* Shadow yang dalam tapi sangat halus (Kunci tampilan Mahal) */
+    box-shadow: 0 20px 40px -5px rgba(0,0,0,0.05);
+    height: 100%;
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.testi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px -10px rgba(0,0,0,0.1);
+}
+
+/* Ikon Kutip Besar untuk Dekorasi */
+.testi-card::before {
+    content: "\201C"; /* Kode ASCII untuk tanda kutip buka */
+    font-family: serif;
+    font-size: 10rem;
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    color: #f3f4f6; /* Warna abu sangat muda */
+    z-index: 0;
+    line-height: 1;
+}
+
+.testi-content {
+    position: relative;
+    z-index: 1; /* Agar teks di atas ikon kutip */
+}
+
+.testi-quote-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.testi-text {
+    color: #555; /* Abu agak gelap agar terbaca */
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #f3f4f6; /* Garis pemisah tipis di bawah */
+    padding-top: 20px;
+}
+
+.user-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info h6 {
+    font-weight: 800;
+    font-size: 0.95rem;
+    margin: 0;
+    color: #000;
+}
+.user-info span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* --- SECTION: NEWS & GUIDES (MAGAZINE STYLE) --- */
+.blog-section {
+    background-color: #ffffff;
+    padding: 80px 0 120px 0;
+}
+
+.blog-card {
+    border: none;
+    border-radius: 20px;
+    background: #fff;
+    /* Shadow minimalis saat diam */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+    height: 100%;
+    overflow: hidden;
+}
+
+.blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+}
+
+.blog-img-wrapper {
+    position: relative;
+    height: 190px; 
+    overflow: hidden;
+}
+.blog-img-wrapper img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+.blog-card:hover .blog-img-wrapper img {
+    transform: scale(1.1); /* Zoom smooth */
+}
+
+.blog-cat-badge {
+    position: absolute;
+    top: 15px; left: 15px;
+    background: #fff;
+    padding: 6px 16px;
+    border-radius: 4px; /* Kotak sedikit round */
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.blog-body {
+    padding: 25px;
+}
+
+.blog-meta {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase; /* Huruf kapital semua biar gaya majalah */
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    display: flex; gap: 15px;
+}
+
+.blog-title {
+    font-weight: 800;
+    font-size: 1.15rem; /* Font judul artikel juga dikecilin sedikit biar imbang */
+    line-height: 1.4;
+    color: #000;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Tombol Read More Sederhana (Text Link) */
+.link-read-more {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #000;
+    text-decoration: none;
+    border-bottom: 2px solid #e5e7eb; /* Garis bawah */
+    padding-bottom: 2px;
+    transition: 0.3s;
+}
+.link-read-more:hover {
+    border-bottom-color: #000; /* Garis jadi hitam saat hover */
+}
+
+.section-title-compact {
+    font-size: 2.2rem; /* Sebelumnya display-5 itu sekitar 3rem, ini jauh lebih kecil */
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #111;
+    line-height: 1.2;
+}
+
+/* --- FOOTER COLUMNS --- */
+.footer-dark {
+    background-color: #2caeba !important; /* Warna Teal (Sama kaya tombol Login) */
+    color: #ffffff; /* Teks Putih */
+    padding-top: 20px;    /* Jarak atas tipis */
+    padding-bottom: 25px; /* Jarak bawah tipis */
+    font-size: 0.6rem;
+    position: relative;
+    border-top: none;
+}
+
+/* Hapus border top garis pemisah lama jika masih ada */
+.footer-bottom-compact {
+    border-top: none !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.social-gap a {
+    color: #666;
+    font-size: 1rem;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+.social-gap a:hover { color: #fff; }
+
+/* Back to top lebih kecil */
+.btn-back-to-top {
+    position: fixed; bottom: 20px; right: 20px;
+    width: 40px; height: 40px; /* Diperkecil */
+    background: #fff;
+    color: #000;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: 0.3s;
+}
+.btn-back-to-top:hover {
+    background: #facc15;
+    transform: translateY(-3px);
+}
+
+/* --- AUTH MODAL (PREMIUM UI) --- */
+
+/* 1. Container Modal */
+.auth-modal-content {
+    border-radius: 24px; /* Sudut lebih bulat */
+    border: none;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* 2. Gambar Samping (Kiri) */
+/* 2. Gambar Samping (Kiri) */
+.auth-side-img {
+    /* Coba ganti URL gambar lain jika yang tadi tidak muncul */
+    background-image: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1000&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    position: relative;
+    min-height: 100%; 
+    /* Penting: Pastikan elemen ini punya tinggi minimal jika parent-nya flex */
+    display: flex; 
+    flex-direction: column;
+    
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+.auth-modal-content .row {
+    min-height: 550px; /* Tinggi minimal modal agar gambar tidak gepeng */
+}
+
+/* Overlay Gradasi di atas gambar */
+.auth-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Teks di bawah */
+    padding: 40px;
+    color: white;
+    
+    /* Pastikan overlay mengikuti radius gambar */
+    border-top-left-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+/* 3. Custom Tabs (Switch Style) */
+.nav-pills-custom {
+    background-color: #f3f4f6;
+    border-radius: 50px;
+    padding: 5px;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.nav-pills-custom .nav-link {
+    border-radius: 50px;
+    font-weight: 600;
+    color: #6b7280;
+    padding: 10px 0;
+    width: 50%;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.nav-pills-custom .nav-link.active {
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* 4. Input Fields (Modern & Floating) */
+.form-control-auth {
+    background-color: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    height: 55px; /* Input lebih tinggi */
+    padding-left: 20px;
+    font-size: 0.95rem;
+    transition: 0.3s;
+}
+
+.form-control-auth:focus {
+    background-color: #fff;
+    border-color: #facc15; /* Border kuning saat aktif */
+    box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.1);
+}
+
+/* Label Floating */
+.form-floating > label {
+    padding-left: 20px;
+    color: #9ca3af;
+}
+
+/* 5. Tombol Action */
+.btn-auth-primary {
+    background-color: #000;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 14px;
+    width: 100%;
+    border: none;
+    transition: 0.3s;
+    font-size: 1rem;
+}
+.btn-auth-primary:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+/* Tombol Close di pojok */
+.btn-close-absolute {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+/* --- 1. NAV LINK ACTIVE STATE --- */
+.navbar-nav .nav-link {
+    position: relative;
+    transition: 0.3s;
+}
+
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+}
+
+/* Style khusus jika menu sedang AKTIF */
+.navbar-nav .nav-link.active {
+    color: #000 !important;
+    font-weight: 800 !important;
+}
+
+
+/* --- RESPONSIVE NAVBAR (MOBILE) --- */
+@media (max-width: 991px) {
+    /* Saat di layar HP (< 991px) */
+    
+    .navbar-collapse {
+        /* Tambahkan background dan padding saat menu dibuka */
+        background-color: #fff;
+        position: absolute;
+        top: 100%; /* Muncul tepat di bawah navbar */
+        left: 0;
+        width: 100%;
+        padding: 20px;
+        border-top: 1px solid #f3f4f6;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        border-radius: 0 0 20px 20px;
+    }
+
+    .navbar-nav {
+        margin-bottom: 20px; /* Jarak antara menu dan tombol login */
+    }
+
+    .nav-link {
+        padding: 10px 0 !important; /* Perbesar area klik jari */
+        display: block;
+    }
+
+    /* Tombol Login dll di Mobile */
+    .nav-actions {
+        flex-direction: column; /* Susun ke bawah biar rapi */
+        width: 100%;
+    }
+
+    .btn-login {
+        width: 100%; /* Tombol login jadi full width di HP */
+        display: block;
+    }
+
+    /* Mengatur bagian ID dan Theme agar sejajar horizontal walau container vertical */
+    .nav-actions > a, 
+    .nav-actions > div {
+        margin-bottom: 10px;
+    }
+
+    .hero-section {
+        min-height: auto; 
+        padding-top: 140px; /* Jarak aman dari navbar */
+        
+        /* PERBAIKAN DI SINI: Tambah padding bawah lebih besar */
+        padding-bottom: 150px; /* Memberi ruang agar tombol panah tidak ketutup Search Box */
+        
+        background-position: 70% center !important; 
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 2rem; /* Turunkan sedikit dari 2.2rem agar muat 1 baris per frasa */
+        font-weight: 800;
+        line-height: 1.2;
+        margin-left: auto; margin-right: auto;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-section p.text-secondary {
+        font-size: 0.9rem !important; /* Ukuran deskripsi */
+        padding-right: 0 !important;
+        margin-bottom: 30px !important;
+        
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        max-width: 100% !important; /* Gunakan 100% agar <br> yang mengatur barisnya */
+        display: block;
+    }
+
+    /* Tengahkan tombol panah slider */
+    .hero-section .d-flex.gap-3 {
+        justify-content: center;
+    }
+    
+    /* 2. SEARCH BOX: Perbaikan Layout */
+    .search-box-container {
+        margin-top: -50px !important; /* Naik sedikit saja menimpa hero */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .search-card {
+        padding: 25px 20px; /* Padding lebih kecil di HP */
+    }
+
+    /* Tab Menu: Bisa discroll ke samping (Horizontal Scroll) */
+    .search-tabs {
+        display: flex;
+        justify-content: space-around; /* Bagi rata lebar layar */
+        flex-wrap: nowrap !important;
+        overflow-x: visible !important;
+        padding-bottom: 20px;
+        width: 100%;
+    }
+
+    .search-tabs .nav-item {
+        flex: 1; /* Setiap item lebar sama */
+        text-align: center;
+    }
+
+    .search-tabs .nav-link {
+        font-size: 0; /* HILANGKAN TEKS */
+        padding: 10px;
+        display: inline-block;
+        border-radius: 12px;
+        background-color: #f8f9fa;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto; /* Tengah */
+    }
+    .search-tabs .nav-link i {
+        font-size: 1.2rem; /* Ukuran ikon */
+        margin: 0 !important;
+        color: #555;
+    }
+    .search-tabs .nav-link.active {
+        background-color: #000 !important;
+    }
+    .search-tabs .nav-link.active i {
+        color: #fff !important;
+    }
+    /* Sembunyikan scrollbar biar rapi */
+    .search-tabs::-webkit-scrollbar { display: none; }
+    .search-tabs { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* 3. INPUT FIELD: Stack ke Bawah */
+    /* Paksa setiap kolom input jadi lebar 100% dan ada jarak */
+    .search-box-container .col-md-3,
+    .search-box-container .col-md-2 {
+        width: 100% !important;
+        margin-bottom: 20px; /* Beri jarak antar input */
+        border-bottom: 1px solid #f3f4f6; /* Garis pemisah manual */
+        padding-bottom: 10px;
+    }
+    
+    /* Garis pemisah antar input */
+    .search-box-container .border-bottom {
+        display: none !important;
+    }
+
+    /* Hapus margin/padding berlebih pada input group */
+    .search-box-container .input-group {
+        margin-bottom: 5px;
+    }
+
+    .search-box-container .col-md-2:last-child {
+        border-bottom: none; /* Tombol tidak perlu garis bawah */
+        margin-top: 10px;
+    }
+
+    /* 4. BAGIAN LAINNYA */
+    .section-title {
+        font-size: 1.8rem; /* Judul section (Rekomendasi, dll) lebih kecil */
+    }
+    
+    /* Card Mobil / Blog / Testi jangan terlalu dempet */
+    .col-md-4, .col-lg-4 {
+        margin-bottom: 20px;
+    }
+
+    /* Brand Logo di Mobile: Scroll Samping juga */
+    .d-flex.flex-wrap.gap-3 {
+        flex-wrap: nowrap !important;
+        overflow-x: auto;
+        padding-bottom: 15px;
+        justify-content: flex-start;
+    }
+
+    /* Container agar bisa discroll ke samping */
+    .scroll-container-horizontal {
+        overflow-x: auto;
+        padding-bottom: 20px;
+        /* Hapus margin negatif container agar tidak geser */
+        margin-right: 0 !important; 
+        padding-right: 0 !important;
+        width: 100%; /* Lebar penuh */
+        
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+    }
+    
+    /* Sembunyikan scrollbar kasar */
+    .scroll-container-horizontal::-webkit-scrollbar { display: none; }
+    .scroll-container-horizontal .row.flex-nowrap {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .scroll-container-horizontal .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+
+    .scroll-container-horizontal .col-10 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        scroll-snap-align: center;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        
+        /* Flexbox center untuk memastikan card di tengah kolom */
+        display: flex;
+        justify-content: center;
+    }
+
+    .cat-card {
+        padding: 15px;
+        /* Opsional: Tambah margin kiri-kanan sedikit jika ingin kartu tidak mepet banget ke pinggir layar HP */
+        margin: 0 5px; 
+    }
+    
+    .cat-img {
+        height: 200px; /* Gambar sedikit diperbesar karena kartunya makin lebar */
+    }
+
+    .promo-card {
+        min-height: 250px; /* Tinggi dikurangi biar tidak terlalu bongsor */
+        padding: 30px;     /* Padding dirapikan */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .promo-title {
+        font-size: 1.8rem; /* Font judul sedikit diperkecil */
+        max-width: 80%;    /* Batasi lebar teks agar tidak nabrak kanan */
+    }
+
+    /* Mengatur Gambar Dekorasi (Pesawat & Wanita) di HP */
+    .promo-img-deco {
+        height: 140px !important; /* Paksa gambar jadi lebih kecil */
+        width: auto;
+        
+        /* Posisikan di pojok kanan bawah */
+        bottom: 0;
+        right: -10px;
+        top: auto; /* Reset posisi top jika ada */
+        
+        /* Bikin agak transparan supaya kalau teksnya panjang, tetap kebaca */
+        opacity: 0.5; 
+    }
+
+    /* Pastikan tombol dan teks selalu di atas gambar */
+    .promo-title, 
+    .btn-yellow-cta {
+        position: relative;
+        z-index: 5;
+    }
+
+    .scroll-container-horizontal .col-10 {
+        flex: 0 0 100% !important; 
+        max-width: 100% !important;
+        scroll-snap-align: start; 
+    }
+
+    /* Atur margin card agar tidak mepet pinggir layar */
+    .scroll-container-horizontal .card-tour {
+        margin: 0 10px; /* Memberi jarak kiri dan kanan 10px dari tepi layar */
+    }
+
+    /* 3. Perbaikan Kartu Wisata di Mobile */
+    .card-tour {
+        margin-bottom: 0 !important; 
+    }
+
+    /* Gambar tidak perlu terlalu tinggi di HP */
+    .card-tour .card-img-wrapper {
+        height: 200px; 
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    /* Penyesuaian Khusus Kartu Hotel di Mobile */
+    .section-hotel-bg .col-10 {
+        flex: 0 0 100% !important; /* Lebar 100% dari container */
+        max-width: 100% !important;
+        scroll-snap-align: center; /* Snap tepat di tengah */
+        padding: 0; /* Hapus padding kolom bawaan bootstrap jika ada */
+    }
+
+    .section-hotel-bg .hotel-card {
+        /* PERBAIKAN PENTING: Hapus margin kiri-kanan yang bikin geser */
+        margin: 0 !important; 
+        width: 100%;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    /* Agar gambar hotel tidak terlalu tinggi di HP */
+    .hotel-img-wrapper {
+        height: 220px;
+    }
+    
+    /* Badge rating diposisikan ulang sedikit jika perlu */
+    .pill-rating {
+        font-size: 0.75rem;
+        padding: 4px 12px;
+        top: -15px;
+    }
+
+    /* Judul Hotel Khusus Mobile */
+    .mobile-hotel-title {
+        font-size: 1.6rem; 
+        white-space: nowrap; 
+        overflow: hidden; 
+        text-overflow: ellipsis; 
+        color: #111;
+        
+        /* Tambahan untuk center */
+        text-align: center; 
+        display: block;
+        margin-left: auto; margin-right: auto;
+    }
+    
+    /* Pastikan paragraf di section hotel tidak kena style center dari hero */
+    .section-hotel-bg p.text-muted {
+        text-align: center !important; /* Paksa rata tengah */
+        font-size: 0.9rem;
+        margin-bottom: 30px; /* Jarak ke kartu */
+        display: block;
+    }
+
+    .section-hotel-bg .d-flex.justify-content-between {
+        display: block !important; /* Ubah jadi block agar mudah diatur text-align */
+        text-align: center !important; /* Rata tengah container */
+    }
+
+    .section-hotel-bg .card-body {
+        padding: 20px 20px 25px 20px !important; /* Sedikit lebih luas di bawah */
+        text-align: left; /* Pastikan isi kartu tetap rata kiri (standar UI) */
+    }
+
+    .section-hotel-bg .card-title {
+        font-size: 1.1rem; 
+        font-weight: 800;
+        line-height: 1.3;
+        margin-bottom: 8px !important; /* Jarak ke lokasi diperkecil */
+        color: #111;
+    }
+
+    .section-hotel-bg p.text-muted.small {
+        font-size: 0.8rem;
+        margin-bottom: 10px !important; /* Jarak ke bintang diperkecil */
+        display: flex;
+        align-items: center; /* Kunci agar ikon dan teks sejajar vertikal */
+        gap: 6px;
+    }
+    .section-hotel-bg p.text-muted.small i {
+        margin-right: 0 !important; /* Reset margin ikon bawaan */
+        font-size: 0.9rem;
+        color: #facc15; /* Ikon lokasi jadi kuning biar cantik */
+    }
+
+    .section-hotel-bg .mb-4.text-dark.small {
+        margin-bottom: 20px !important; /* Jarak ke harga */
+        font-size: 0.75rem; /* Ukuran bintang pas */
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        color: #fbbf24; /* Warna kuning emas */
+    }
+
+    /* 5. Layout Harga & Tombol */
+    .hotel-price {
+        font-size: 1.2rem; 
+        font-weight: 800;
+        color: #111;
+        line-height: 1;
+    }
+
+    .btn-hotel-book {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+        background-color: #111; /* Tombol Hitam Elegan */
+        color: #fff;
+    }
+
+    /* Pastikan baris harga dan tombol sejajar rapi */
+    .section-hotel-bg .d-flex.justify-content-between {
+        align-items: flex-end; /* Ratakan bawah agar harga & tombol sejajar rapi */
+        border-top: 1px solid #f3f4f6; /* Garis tipis pemisah di atas harga */
+        padding-top: 15px; /* Jarak dari garis ke konten */
+    }
+
+    /* Pastikan section titles di tengah */
+    .testi-section .d-flex,
+    .blog-section .d-flex {
+        display: block !important;
+        text-align: center !important;
+    }
+    
+    /* Sembunyikan tombol panah navigasi di mobile */
+    .testi-section .btn-nav-circle,
+    .blog-section .btn-view-all {
+        display: none !important; /* Tombol view all bisa dibuat muncul di bawah jika mau */
+    }
+    
+    /* Badge di tengah */
+    .badge-yellow-pill {
+        margin-left: auto; margin-right: auto;
+    }
+
+    /* Kartu Testi Full Width */
+    .testi-section .col-10,
+    .blog-section .col-10 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+
+    /* Margin Card agar tidak mepet */
+    .testi-card, .blog-card {
+        margin: 0 !important; 
+        width: 100%;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+    
+    /* Padding Testi Card agar muat */
+    .testi-card {
+        padding: 30px 20px !important;
+    }
+    
+    /* Judul Testi Font Size */
+    .testi-quote-title { font-size: 1.1rem; }
+    
+    /* Blog Image Height */
+    .blog-img-wrapper { height: 200px; }
+    
+    /* Blog Title */
+    .blog-title { font-size: 1.2rem; margin-bottom: 10px; }
+
+    .luxury-section-wrapper {
+        padding: 40px 25px; /* Padding dikurangi di HP */
+        border-radius: 24px;
+    }
+
+    .luxury-title {
+        font-size: 2rem; /* Font judul dikecilkan drastis */
+        margin-bottom: 15px;
+    }
+
+    .badge-pill-white {
+        margin-bottom: 15px;
+    }
+
+    /* Layout Gambar di Mobile: Tumpuk Vertikal */
+    .luxury-gallery {
+        flex-direction: column; /* Turun ke bawah */
+        height: auto; /* Tinggi otomatis mengikuti konten */
+        margin-top: 30px;
+    }
+
+    /* Gambar Utama jadi kotak lebar */
+    .gallery-main {
+        width: 100%;
+        height: 200px; 
+    }
+    
+    /* Gambar samping jadi berjejer horizontal di bawah */
+    .gallery-side {
+        flex-direction: row; /* Jejer ke samping */
+        height: 120px; /* Tinggi gambar kecil */
+        gap: 10px;
+    }
+    
+    /* Biar gambar kecil proporsional */
+    .gallery-side img {
+        width: 50%; /* Bagi dua rata */
+        border-radius: 20px !important; /* Paksa radius kotak manis di HP */
+    }
+
+    .feature-card {
+        margin: 0 10px !important; /* Jarak kiri kanan */
+        width: auto; /* Biarkan flex mengatur lebar */
+    }
+
+    .scroll-container-horizontal .col-10 {
+        flex: 0 0 100% !important; 
+        max-width: 100% !important;
+        scroll-snap-align: center;
+        padding: 0;
+    }
+
+    /* --- PERBAIKAN FOOTER MOBILE --- */
+
+    .footer-dark {
+        padding-top: 40px; /* Tambah ruang atas */
+        text-align: left;  /* Pastikan rata kiri */
+    }
+
+    /* 4. Bottom Bar */
+    .footer-bottom-compact {
+        text-align: center;
+        padding-bottom: 50px; /* Ruang extra di bawah agar tidak ketutup tombol Back to Top */
+    }
+}
+
+/* GLOBAL HORIZONTAL SCROLL (Desktop + Mobile Carousel) */
+.scroll-container-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+}
+.scroll-container-horizontal::-webkit-scrollbar { 
+    display: none; 
+}
+.scroll-container-horizontal .row.flex-nowrap {
+    display: flex;
+    flex-wrap: nowrap;
+}

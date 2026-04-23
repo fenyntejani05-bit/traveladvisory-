@@ -1,0 +1,18 @@
+DELETE FROM `tours` WHERE id IN (2, 4, 5);
+
+INSERT INTO `tours` (`category_id`, `title`, `location`, `duration`, `guests`, `price`, `rating`, `reviews`, `image_url`, `badge_text`, `badge_class`) VALUES
+(2, 'Taj Mahal', 'Agra, Uttar Pradesh', '3 days 2 nights', '2-4 people', 4500.00, 4.95, 1250, 'https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=800&q=80', 'World Wonder', 'text-danger border-danger'),
+(1, 'Goa Beaches', 'Goa', '4 days 3 nights', '2-6 people', 5500.00, 4.80, 890, 'https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80', 'Party Capital', 'text-warning border-warning'),
+(2, 'Jaipur Forts', 'Rajasthan', '3 days 2 nights', '2-4 people', 6000.00, 4.88, 950, 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=800&q=80', 'Royal Heritage', 'text-success border-success'),
+(3, 'Kerala Backwaters', 'Kerala', '3 days 2 nights', '2 people', 8500.00, 4.96, 620, 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80', 'Relaxing', 'text-info border-info'),
+(2, 'Varanasi Ghats', 'Uttar Pradesh', '2 days 1 night', '2-4 people', 3000.00, 4.85, 1100, 'https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80', 'Spiritual', 'text-danger border-danger'),
+(5, 'Leh Ladakh Highlights', 'Ladakh', '6 days 5 nights', '2-4 people', 15000.00, 4.98, 780, 'https://images.unsplash.com/photo-1581793746485-04698e79a4e8?auto=format&fit=crop&w=800&q=80', 'Adventure', 'text-success border-success'),
+(4, 'Ranthambore Safari', 'Rajasthan', '2 days 1 night', '2-6 people', 7500.00, 4.75, 430, 'https://images.unsplash.com/photo-1517513006821-654b9d0dc6b6?auto=format&fit=crop&w=800&q=80', 'Wildlife', 'text-warning border-warning'),
+(5, 'Rishikesh Adventure', 'Uttarakhand', '3 days 2 nights', '4-8 people', 4000.00, 4.82, 850, 'https://images.unsplash.com/photo-1600713783478-f0270aefb4e4?auto=format&fit=crop&w=800&q=80', 'Best Sale', 'text-success border-success'),
+(4, 'Udaipur Palaces', 'Rajasthan', '3 days 2 nights', '2 people', 7000.00, 4.90, 670, 'https://images.unsplash.com/photo-1596700078044-c7ef54caadd8?auto=format&fit=crop&w=800&q=80', 'Romantic', 'text-danger border-danger'),
+(5, 'Munnar Tea Gardens', 'Kerala', '4 days 3 nights', '2-4 people', 6500.00, 4.89, 540, 'https://images.unsplash.com/photo-1593693397690-362cb9628af3?auto=format&fit=crop&w=800&q=80', 'Top Rated', 'text-warning border-warning'),
+(1, 'Andaman Island Tour', 'Andaman', '5 days 4 nights', '2-4 people', 18000.00, 4.95, 300, 'https://images.unsplash.com/photo-1620302788556-91e0a29ba526?auto=format&fit=crop&w=800&q=80', 'Tropical', 'text-info border-info'),
+(2, 'Hampi Ruins', 'Karnataka', '2 days 2 nights', '2-6 people', 3500.00, 4.78, 420, 'https://images.unsplash.com/photo-1600100397608-4100dc89635e?auto=format&fit=crop&w=800&q=80', 'Historic', 'text-secondary border-secondary'),
+(5, 'Darjeeling Highlights', 'West Bengal', '4 days 3 nights', '2-4 people', 8000.00, 4.85, 600, 'https://images.unsplash.com/photo-1544634076-a90160ddf44e?auto=format&fit=crop&w=800&q=80', 'Scenic', 'text-success border-success'),
+(5, 'Shimla Snow Tour', 'Himachal Pradesh', '3 days 2 nights', '2-4 people', 7000.00, 4.80, 750, 'https://images.unsplash.com/photo-1562635900-58d04ebd4fc9?auto=format&fit=crop&w=800&q=80', 'Winter Fun', 'text-info border-info'),
+(5, 'Manali Retreat', 'Himachal Pradesh', '4 days 3 nights', '2-6 people', 8500.00, 4.92, 1050, 'https://images.unsplash.com/photo-1605640840605-14ac1855827b?auto=format&fit=crop&w=800&q=80', 'Top Rated', 'text-warning border-warning');
